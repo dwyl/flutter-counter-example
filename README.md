@@ -38,8 +38,37 @@ more about **_Flutter_** and who are looking
 to learn how to use the **_TDD correctly_**.
 It was made for all **beginners** without previous _experience/knowledge_.
 
+# _How_? ✅
+
+To realize any application in Flutter we obviously have to create a **_new project_** in Flutter.<br />
+
+### Steps to create a new project in Flutter (Visual Studio)
+
+First it is necessary to **_install_** the visual studio code (https://code.visualstudio.com/docs/?dv=osx). <br />
+Then we have to **_download_** the extensions that we will use in our application.
+Inside Visual Studio we have to go to the extensions icon and look for **_Flutter and Dart_**.
+
+![Extensions](https://user-images.githubusercontent.com/27420533/76661655-e7a1b380-6573-11ea-8f7e-4cdd15da6832.png)
+
+![Flutter_Dart_extensions](https://user-images.githubusercontent.com/27420533/76661748-1c156f80-6574-11ea-9879-34bc149bad6d.png)
+
+Now you need to go to the visual studio and click **_Cmd+Shift+P_**.<br />
+Then select **_Flutter: New Project_** option.
+
+![Flutter_project](https://user-images.githubusercontent.com/27420533/76662067-dc02bc80-6574-11ea-86fb-001a469a25e6.png)
 
 
+Then enter the name of the **_Project_**.
+
+
+![Project_Name](https://user-images.githubusercontent.com/27420533/76662343-9bf00980-6575-11ea-95ab-b22578cbe019.png)
+
+Then it is necessary to select the folder where the project will be created.
+
+Then just **_click OK_** to create the project.
+Right after that the visual studio will restart and the following command will appear in the bottom right corner.
+
+![Command_create_project_flutter](https://user-images.githubusercontent.com/27420533/76662484-fd17dd00-6575-11ea-8c3f-7fea184c3b22.png)
 
 
 ### Relevant Reading
