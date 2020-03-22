@@ -71,6 +71,160 @@ Right after that the visual studio will restart and the following command will a
 ![Command_create_project_flutter](https://user-images.githubusercontent.com/27420533/76662484-fd17dd00-6575-11ea-8c3f-7fea184c3b22.png)
 
 
+### Steps to build a basic App in Flutter following TDD best pratices
+
+After creating the new project in Visual Studio we start by `changing the project files`.<br />
+Inside the `lib folder` create the `Domain` folder and then create the `Presentation` folder.<br />
+Inside the `test folder` we create the same folders.
+
+#### Add Packages to pubspec.yaml file
+
+Then we start by adding the packages we will need to perform the application inside the file `pubspec.yaml`.<br />
+For this project we will use the `Equatable` package and the `shared_preferences` package.
+
+```dart
+dependencies:
+  flutter:
+    sdk: flutter
+
+  equatable: ^1.1.0
+
+  shared_preferences: 0.5.6+3
+
+```
+
+Equatable package: https://pub.dev/packages/equatable <br />
+Shared_preferences: https://pub.dev/packages/shared_preferences
+
+
+### Write the First tests
+
+In order to perform the tests we must first `create a file with a function`.<br />
+This function in the case of this project is the function to `increment` and `decrement`.<br />
+
+For that inside the `Domain` folder, create a file called `counter.dart`.<br />
+
+Inside the `counter.dart` file you need to initialize the class.
+
+```dart
+import 'package:equatable/equatable.dart';
+
+class Counter extends Equatable {
+  int value = 0;
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [value];
+}
+```
+We will have a `value` that will start at 0 to `count` the numbers.<br />
+
+Inside the `Domain` folder that should be inside the `test folder` we have created a file called `counter_test.dart` this will be used to create and run all the necessary `tests` for the application to work.<br />
+
+Our `first test` will be for the initial value to start at 0.
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:counter_app_tdd/Domain/counter.dart';
+
+void main() {
+  group('Counter', () {
+    test('value should start at 0', () {
+      expect(Counter().value, 0);
+    });
+   });
+}
+```
+The `second test` will be used to see if the value is being `incremented` and if it is only being increased `one by one`.
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:counter_app_tdd/Domain/counter.dart';
+
+void main() {
+  group('Counter', () {
+    test('value should start at 0', () {
+      expect(Counter().value, 0);
+    });
+    
+     test('value should be incremented', () {
+      final counter = Counter();
+
+      counter.increment();
+
+      expect(counter.value, 1);
+
+    });
+    
+   });
+}
+```
+
+And the `third test` will be to know if clicking on the decrement button decreases the value and if only is taken out one by one.
+
+```dart
+import 'package:flutter_test/flutter_test.dart';
+import 'package:counter_app_tdd/Domain/counter.dart';
+
+void main() {
+  group('Counter', () {
+    test('value should start at 0', () {
+      expect(Counter().value, 0);
+    });
+
+    test('value should be incremented', () {
+      final counter = Counter();
+
+      counter.increment();
+
+      expect(counter.value, 1);
+
+    });
+
+    test('value should be decremented', () {
+      final counter = Counter();
+
+counter.decrement();
+
+      expect(counter.value, -1);
+
+
+    });
+  });
+}
+```
+If we run the `tests` now they'll `fail`.
+
+![tests_fail](https://user-images.githubusercontent.com/27420533/77262834-73ab8d80-6c8e-11ea-93bd-76aa248d65eb.png)
+
+
+To pass the tests we have to go to the `counter.dart` file and add the `increment` and `decrement` functions. 
+
+```dart
+import 'package:equatable/equatable.dart';
+
+class Counter extends Equatable {
+  int value = 0;
+
+
+  increment() => value++;
+
+
+  decrement() => value--;
+
+
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [value];
+}
+```
+
+This way the tests will `pass`.
+
+![tests_pass](https://user-images.githubusercontent.com/27420533/77265469-b1131980-6c94-11ea-97f3-85f33c5e02e7.png)
+
+
 ### Relevant Reading
 - https://dart.dev/guides/testing
 - https://flutter.dev/docs/testing
