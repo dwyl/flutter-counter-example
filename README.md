@@ -224,6 +224,87 @@ This way the tests will `pass`.
 
 ![tests_pass](https://user-images.githubusercontent.com/27420533/77265469-b1131980-6c94-11ea-97f3-85f33c5e02e7.png)
 
+For our homepage we will `create` a file inside the `Presentation` folder with the name `counter_page.dart`.<br />
+In our `main.dart` file we will have to give the information that we will use as initial page the file we create now.<br />
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:counter_app_tdd/Presentation/counter_page.dart';
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+Widget build(BuildContext context) {
+  return MaterialApp(
+    title: 'Counter App Example',
+    theme: ThemeData(
+      primaryColor: Colors.red.shade800,
+      accentColor: Colors.red.shade600,
+    ),
+    debugShowCheckedModeBanner: false,
+    home: CounterPage(),
+  );
+}
+}
+```
+
+All the settings in the appearance of our application will be made in the file `counter_page.dart`.
+
+```dart
+import 'package:counter_app_tdd/Domain/counter.dart';
+import 'package:flutter/material.dart';
+
+
+class CounterPage extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Counter App'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                '$value',
+              style: TextStyle(fontSize:80.0),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+              FloatingActionButton(
+              onPressed:(counter.increment()){
+              },
+              child: Icon(Icons.add),
+              tooltip: 'Increment',
+              ),
+              SizedBox(width: 20.0),
+              FloatingActionButton(
+              onPressed: (counter.decrement()){
+              },
+              child: Icon(Icons.remove),
+              tooltip: 'Decrement',
+              ),
+              
+              ],)
+            ],
+          )));
+  }
+
+}
+```
+
+We import our `counter.dart` class so we can use the `implement` and `decrement` function.
+
 
 ### Relevant Reading
 - https://dart.dev/guides/testing
