@@ -305,6 +305,17 @@ class CounterPage extends StatelessWidget{
 
 We import our `counter.dart` class so we can use the `implement` and `decrement` function.
 
+This will be the `final result` of the application.
+
+
+<div align="center">
+
+
+![App_Work_0](https://user-images.githubusercontent.com/27420533/78388610-34a80100-75d9-11ea-879f-7984ebbef8cf.png) 
+![App_Work_1](https://user-images.githubusercontent.com/27420533/78388614-383b8800-75d9-11ea-9819-88e4da46f417.png) ![App_Work_2](https://user-images.githubusercontent.com/27420533/78388620-3a9de200-75d9-11ea-8116-f99e2ec896fa.png)
+
+</div>
+
 
 ### Relevant Reading
 - https://dart.dev/guides/testing
