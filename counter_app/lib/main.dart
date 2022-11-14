@@ -1,9 +1,11 @@
 import 'package:counter_app/presentation/counter_page.dart';
 import 'package:flutter/material.dart';
 
+// coverage:ignore-start
 void main() {
   runApp(const MyApp());
 }
+// coverage:ignore-end
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
