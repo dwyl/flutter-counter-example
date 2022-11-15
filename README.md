@@ -494,6 +494,117 @@ like so.
 
 <img width="1013" alt="coverage" src="https://user-images.githubusercontent.com/17494745/201938273-c22fe031-7247-4cbd-b0ed-708b70b662a9.png">
 
+## Continuous integration
+Now that we set up and know how to get coverage,
+let's create a pipeline that will run these tests
+everytime someone commits to the `main` branch,
+and get this coverage on [Codecov](https://about.codecov.io/),
+so we can display this coverage if we want to :smile:.
+
+For this, we can leverage Github Actions, 
+which will allow us to create a pipeline that is executed
+everytime a commit is made in `main` or a PR is made to be merged to it.
+Github checks for the `.github` directory in their repos for this.
+So let's create a `.github/workflows` folder
+to add our configuration file `ci.yml` in.
+
+> Github Actions supports several frameworks 
+> and languages out of the box. 
+> If you are interested in learning more, 
+> check their docs -> https://github.com/features/actions
+
+```yml
+name: flutter_tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+```
+
+In this **pipeline** named "flutter_tests", we are telling
+Github that we want to execute it everytime a push on 
+or PR is made to the `main` branch. 
+We then set up a **job** called "tests"
+that will run on an `ubuntu`-based environmennt.
+
+In this job, we are going to be defining steps
+that will be executed. 
+The first one we added checks out the code on the branch.
+
+Let's add another step.
+
+```yml
+- name: Install and set Flutter version
+        uses: subosito/flutter-action@v1.4.0
+        with:
+          flutter-version: '3.3.8'
+```
+
+In this step, we are using an 
+[action created by the community](https://github.com/marketplace/actions/flutter-action)
+that creats an environmnent to run our code on.
+
+Let's add more steps.
+
+```yml
+- name: Restore packages
+  run: flutter pub get
+
+- name: Analyze
+  run: flutter analyze
+
+- name: Run tests
+  run: flutter test --coverage
+```
+
+We just added three steps. 
+In the first one, we are downloading the dependencies of the project.
+In the second step, we are analyzing the code.
+In the last one, we are testing the code and generating the
+coverage, creating a `coverage` folder with a `lcov.info` file in it.
+This file will be used by Codecov to generate an overview of the code coverage.
+
+We now need to connect to Codecov. 
+If you login to Codecov using Github,
+you will see the repositories you have control over.
+Repositories that are not setup for Codecov will appear like so.
+The setup for Codecov is accessible by clicking the
+"setup repo" link. 
+
+<img width="1348" alt="image" src="https://user-images.githubusercontent.com/17494745/202000844-8693d002-43ac-4205-83a4-af247d4e7894.png">
+
+After following these steps,
+if you have a public repository, you can simply add
+the following step to the `ci.yml` file.
+
+```yml
+- name: Upload coverage to codecov
+  run: curl -s https://codecov.io/bash
+  shell: bash
+```
+
+If you are dealing with a private repository,
+use the token as a Github Secret provided in the `Codecov` repo setup page
+you clicked before and then add the following to the `ci.yml` file.
+
+```yml
+- name: Upload coverage to codecov
+  run: curl -s https://codecov.io/bash -t $
+  shell: bash
+```
+
+And you should be done! 
+
 
 # Relevant reading 📖
 Now that you have created a simple app,
