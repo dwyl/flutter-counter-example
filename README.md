@@ -391,6 +391,78 @@ Your app should now look like this :tada:.
 | ![initial](https://user-images.githubusercontent.com/17494745/201922142-08061339-e1e4-425e-ba61-afae0a4fa251.png)  | ![increment](https://user-images.githubusercontent.com/17494745/201922084-640bcd5c-7bda-4c02-b5e5-ccf99d277861.png) | ![decrement](https://user-images.githubusercontent.com/17494745/201922179-6ca5d66c-727d-499a-9def-31e124fa601e.png) |
 |:--:|:-:|:-:|
 
+# Running on a real device 🤳
+Having an emulator is handy but at the end of the day,
+users are going to be using the application on their devices
+either be it an Android or an iPhone.
+
+Let's do a rundown on how to get it working
+on an Android Device. 
+Don't worry, it is super easy!
+
+Firstly, you need to connect your phone to the computer
+with a USB Cable. 
+Your device needs to have **Developer Option** and 
+**USB Debugging** turned on in the device settings. 
+In OnePlus' case, this is where you turn it on.
+
+![dev_option](https://user-images.githubusercontent.com/17494745/201945785-4aff62a2-5dee-42a4-8e04-bef94d673129.png)
+
+If you're not finding the developer option, go to `About`
+section of the phone in the settings
+and tap the build number multiple times, 
+until a message shows that you are now a developer.
+
+The steps should look like the following image.
+
+![steps](https://user-images.githubusercontent.com/17494745/201946301-38c30ce5-25e9-44a1-9557-ef7208ef97c8.png)
+
+After having these settings turned on and your device connected to the computer,
+you can check if the device is being detected by running:
+
+```sh
+flutter devices
+```
+
+In our case, by running this command, we verify that
+our OnePlus is detected.
+
+<img width="661" alt="device_detected" src="https://user-images.githubusercontent.com/17494745/201946732-a45299e6-66b4-4ef2-9499-f62a2190ec2c.png">
+
+Since we are working on Visual Studio Code, 
+we can now choose this device to run our app in.
+
+![device_picker](https://user-images.githubusercontent.com/17494745/201946939-b37b37d4-c164-403d-b49c-f122ddb1088e.png)
+
+Let's choose it and run the app by clicking `F5`
+or `Run > Start debugging`.
+
+> If this is your first time running on 
+> an Android device/emulator, it might take some time
+> so Gradle downloads all the needed dependencies, binaries and
+> respective SDKs to build the app to be run on the app. 
+> Just make sure you have a solid internet connection.
+> If you wanto to check the traces of what it's doing
+> "behind the scenes", instead of running through VSCode,
+> type `flutter run -v` after selecting the device, instead.
+> This will print the trace logs as it builds the app.
+
+> :warning: If by any chance you interrupted this iniial setup, 
+> chances are your `gradle` download is corrupted and 
+> it shows a [timeout error](https://stackoverflow.com/questions/67072304/flutter-throwing-error-timeout-of-x-reached-waiting-for-exclusive-access-to-fil)
+> when you run `flutter run -v`. 
+> To fix this, simply go to your `Home` folder 
+> (type `echo $HOME` to see the directory path)
+> and delete the `.gradle` folder. 
+> If you re-run `flutter run -v` or do it through VSCode,
+> it will download the dependencies on a clean slate again.
+
+You should now see your app working on your 
+mobile device! :tada:
+
+![android_app_running](https://user-images.githubusercontent.com/17494745/201960107-6e3d00ae-d3a3-4a81-8208-2dfe50672f4d.gif)
+
+
 # Test coverage and actions 🚚
 
 To get the test coverage, we are going to simply run 
@@ -423,8 +495,13 @@ like so.
 <img width="1013" alt="coverage" src="https://user-images.githubusercontent.com/17494745/201938273-c22fe031-7247-4cbd-b0ed-708b70b662a9.png">
 
 
-### Relevant Reading
+# Relevant reading 📖
+Now that you have created a simple app,
+you may continue learning!
+Here are a few links to help
+you with TDD and overall Flutter development :smile:
+
+- https://github.com/dwyl/learn-flutter
 - https://dart.dev/guides/testing
 - https://flutter.dev/docs/testing
 - https://medium.com/learnfazz/common-mistakes-in-tdd-and-tdd-in-flutter-2bf682071036
-- https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/
