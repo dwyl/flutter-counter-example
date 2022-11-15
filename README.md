@@ -389,12 +389,38 @@ Your app should now look like this :tada:.
 
 
 | ![initial](https://user-images.githubusercontent.com/17494745/201922142-08061339-e1e4-425e-ba61-afae0a4fa251.png)  | ![increment](https://user-images.githubusercontent.com/17494745/201922084-640bcd5c-7bda-4c02-b5e5-ccf99d277861.png) | ![decrement](https://user-images.githubusercontent.com/17494745/201922179-6ca5d66c-727d-499a-9def-31e124fa601e.png) |
-|:---:|:---:|:---:|
+|:--:|:-:|:-:|
 
-# Test coverage 🧪
+# Test coverage and actions 🚚
 
+To get the test coverage, we are going to simply run 
+three commands. However, firstly, if you are on MacOS,
+you need to install `lcov`. For this, run the following command
+to install it in your computer.
 
+```sh
+brew install lcov
+```
 
+Now, to get the coverage, run the following commands.
+
+```sh
+# Generate `coverage/lcov.info` file
+flutter test --coverage
+# Generate HTML report
+genhtml coverage/lcov.info -o coverage/html
+# Open the report
+open coverage/html/index.html
+```
+
+The generated HTML will create files inside
+the `coverage/` folder. Add it to your 
+`.gitignore` file.
+
+Your browser should have opened a window, 
+like so.
+
+<img width="1013" alt="coverage" src="https://user-images.githubusercontent.com/17494745/201938273-c22fe031-7247-4cbd-b0ed-708b70b662a9.png">
 
 
 ### Relevant Reading
