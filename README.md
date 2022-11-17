@@ -396,6 +396,7 @@ Having an emulator is handy but at the end of the day,
 users are going to be using the application on their devices
 either be it an Android or an iPhone.
 
+## Android
 Let's do a rundown on how to get it working
 on an Android Device. 
 Don't worry, it is super easy!
@@ -462,6 +463,28 @@ mobile device! :tada:
 
 ![android_app_running](https://user-images.githubusercontent.com/17494745/201960107-6e3d00ae-d3a3-4a81-8208-2dfe50672f4d.gif)
 
+### iOS
+The process is a wee more complicated because you need an
+**Apple ID** or to sign up for a [`Developer Account`](https://developer.apple.com/programs/enroll/).
+
+After this, open `XCode` and sign in with your ID 
+(inside `Preferences > Accounts`).
+
+![preferences](https://user-images.githubusercontent.com/17494745/202515691-d4d3832b-8b6e-4e3b-953f-9c01b4a87228.png)
+
+Inside `Manager Certificates`, click on the "+" sign and
+select `iOS Development`.
+
+![certificates](https://user-images.githubusercontent.com/17494745/202516745-ba05bfac-20db-492f-9580-3aa7cc09803a.png)
+
+After this, plug the device to your computer.
+Find the device in the dropdown (`Window > Organizer`).
+Below the team pop-up menu, click on `Fix Issue`
+and then on `XCode` click the `Run` button.
+
+In subsequent runs, you can deploy with VSCode
+or any other IDE. 
+This certificate setup is only needed on the first time with XCode.
 
 # Test coverage and actions 🚚
 
