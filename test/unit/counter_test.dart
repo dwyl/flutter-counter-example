@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:counter_app_tdd/Domain/counter.dart';
+import 'package:counter_app/domain/counter.dart';
 
 void main() {
-  group('Counter', () {
+  group('Counter test', () {
     test('value should start at 0', () {
       expect(Counter().value, 0);
     });
@@ -19,11 +19,15 @@ void main() {
     test('value should be decremented', () {
       final counter = Counter();
 
-counter.decrement();
+      counter.decrement();
 
       expect(counter.value, -1);
+    });
 
+    test('getting props', () {
+      final counter = Counter();
 
+      expect(counter.props, [0]);
     });
   });
 }
