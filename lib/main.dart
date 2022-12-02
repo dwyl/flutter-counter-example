@@ -1,5 +1,6 @@
-import 'package:counter_app/presentation/counter_page.dart';
 import 'package:flutter/material.dart';
+
+import 'presentation/counter_page.dart';
 
 // coverage:ignore-start
 void main() {
